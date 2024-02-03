@@ -22,7 +22,7 @@
                         <div class="invalid-feedback">Please enter a valid username.</div>
                     </div>
                     <div class="mb-3">
-                        <<label for="Password" class="form-label">Password</label>
+                        <label for="Password" class="form-label">Password</label>
                         <input type="password" name="psw" id="Password" placeholder="123456" class="form-control" minlength="8" maxlength="20" required>
                         <div class="invalid-feedback" id="password-validation">Password must be between 8 and 20 characters.</div>
                     </div>
@@ -41,6 +41,12 @@
                     </div>
                     <div class="alert alert-success" style="display: none;" id="SuccessDiv">
                         Registration Successful!
+                    </div>
+                    <div class="alert alert-danger" style="display: none;" id="userFail">
+                        This username is already registered
+                    </div>
+                    <div class="alert alert-danger" style="display: none;" id="EmailFail">
+                        This e-mail is already registered
                     </div>
                 </form>
             </div>
@@ -93,11 +99,19 @@
     // Function to show or hide the div based on the parameter value from the URL
     function toggleDivVisibility() {
         var paramValue = getParameterByName('registration'); // Replace 'paramName' with your parameter name
-        var myDiv = document.getElementById('SuccessDiv');
+        var successDiv = document.getElementById('SuccessDiv');
+        var failDivUser = document.getElementById('userFail');
+        var failDivEmail = document.getElementById('EmailFail');
         if (paramValue === 'true') {
-            myDiv.style.display = 'block'; // Show the div
+            successDiv.style.display = 'block'; // Show the div
+        } else if (paramValue === 'failedUser') {
+            failDivUser.style.display = 'block'; // Show the div
+        } else if (paramValue === 'failedEmail') {
+            failDivEmail.style.display = 'block'; // Show the div
         } else {
-            myDiv.style.display = 'none'; // Hide the div
+            successDiv.style.display = 'none'; // Hide the divs
+            failDivUser.style.display = 'none';
+            failDivEmail.style.display = 'none';
         }
     }
 
