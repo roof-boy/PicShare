@@ -11,7 +11,7 @@ $hashedPassword = password_hash($formPass, PASSWORD_DEFAULT);
 # Connect to DB
 
 $username = 'root';
-$password = '';
+$password = 'root';
 $server = 'localhost';
 $database = 'picshare';
 
