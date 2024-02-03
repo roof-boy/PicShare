@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <title>PicShare: Registration</title>
+        <link rel="stylesheet" href="register.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+
+    <script>
+    // Function to get a parameter value from the URL query string
+    function getParameterByName(name) {
+        var urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(name);
+    }
+
+    // Function to show or hide the div based on the parameter value from the URL
+    function toggleDivVisibility() {
+        var paramValue = getParameterByName('registration'); // Replace 'paramName' with your parameter name
+        var myDiv = document.getElementById('SuccessDiv');
+        if (paramValue === 'true') {
+            myDiv.style.display = 'block'; // Show the div
+        } else {
+            myDiv.style.display = 'none'; // Hide the div
+        }
+    }
+
+    // Call the toggleDivVisibility function when the page loads
+    window.onload = function() {
+        toggleDivVisibility();
+    };
+    </script>
+
+    <body>
+        <div class="mainflex">
+            <div class="container">
+                <h2 class="signupTitle">Welcome to PicShare!</h2>
+                <form action="register.php" method="post">
+                    <p>Username</p>
+                    <input type="text" name="usr" id="Username" class="forminput">
+                    <p>Password</p>
+                    <input type="password" name="psw" id="Password" class="forminput">
+                    <p>Email</p>
+                    <input type="email" name="eml" id="Email" class="forminput">
+                    <br>
+                    <input type="submit" value="Signup" class="subBtn">
+                    <br>
+                    <a href="/instacopy/login/login.html" class="subBtn">Login instead!</a>
+                </form>
+            </div>
+            <br>
+            <div class="successDiv" id="SuccessDiv" style="display: none;">
+                <p>Registration Successful!</p>
+            </div>
+        </div>
+    </body>
+</html>

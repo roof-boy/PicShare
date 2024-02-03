@@ -1,0 +1,120 @@
+/* REGISTER STYLE */
+
+body, html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: Helvetica, sans-serif;
+    background-color: #F3EEEA;
+    font-weight: bold;
+}
+
+.mainDisplay {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%; /* Ensure the container takes up the full height of the viewport */
+}
+
+.regBox {
+    order: 1;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #EBE3D5;
+    width: 20%;
+    text-align: center;
+    margin: 10px;
+    border-radius: 20px;
+    box-shadow: 0px 1px 7px 3px #776B5D;
+}
+
+.otherOpt {
+    order: 2;
+    height: 100px;
+    background-color: #EBE3D5;
+    width: 20%;
+    text-align: center;
+    margin: 10px;
+    border-radius: 20px;
+    box-shadow: 0px 1px 7px 3px #776B5D;
+}
+
+.inputTitle {
+    order: 1;
+    user-select: none;
+    font-size:large;
+    border-radius: 5px;
+    width: 280px;
+}
+
+.hozLine {
+    border: 2px solid;
+    border-radius: 100px;
+    margin-top: -15px;
+    margin-bottom: -2px;
+}
+
+.input {
+    order: 2;
+    display: flex;
+    flex-direction: column;
+}
+
+.boxInput {
+    height: 25px;
+    width: 200px;
+    border: 1px solid;
+    text-align: center;
+    border-radius: 5px;
+    font-size: medium;
+}
+
+.boxInput:focus {
+    background-color: #ececec;
+}
+
+.boxInput:hover {
+    background-color: #ececec;
+}
+
+.btnInput {
+    height: 25px;
+    width: 200px;
+    border: 1px solid;
+    text-align: center;
+    border-radius: 5px;
+    font-size: medium; 
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-color: #776B5D;
+    font-weight: bold;
+    color: white;
+    border-color: black;
+}
+
+.btnInput:hover {
+    background-color: #5c5348;
+}
+.boxInput, p {
+    user-select: none;
+}
+
+.user {
+    order: 1;
+}
+
+.password {
+    order: 2;
+}
+
+.email {
+    order: 3;
+}
+
+
+
+
+

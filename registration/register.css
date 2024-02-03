@@ -1,0 +1,42 @@
+body {
+    background-color: rgb(233, 233, 233);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.container {
+    border: 2px rgb(255, 255, 255);
+    border-style: outset;
+    margin: auto;
+    order: 1;
+}
+.mainflex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.forminput {
+    padding: 5px 2px 5px 2px;
+    font-size: medium;
+}
+
+.subBtn {
+    font-size: medium;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.signupTitle {
+    border-bottom: 2px solid black;
+    padding-bottom: 10px;
+}
+
+.successDiv {
+    order: 2;
+    width: 20%;
+    height: 50px; 
+    border: 2px outset rgb(255, 255, 255);
+    box-sizing: border-box;
+    margin: auto;
+    text-align: center;
+    font-size: 1em;
+}
