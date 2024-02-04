@@ -1,42 +1,116 @@
-body {
-    background-color: rgb(233, 233, 233);
-    font-family: Arial, Helvetica, sans-serif;
+/* REGISTER STYLE */
+
+body, html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: Helvetica, sans-serif;
+    background-color: #F3EEEA;
+    font-weight: bold;
 }
 
-.container {
-    border: 2px rgb(255, 255, 255);
-    border-style: outset;
-    margin: auto;
-    order: 1;
-}
-.mainflex {
+.mainDisplay {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-}
-.forminput {
-    padding: 5px 2px 5px 2px;
-    font-size: medium;
+    height: 100%; /* Ensure the container takes up the full height of the viewport */
 }
 
-.subBtn {
-    font-size: medium;
-    margin-bottom: 10px;
-    margin-top: 10px;
-}
-
-.signupTitle {
-    border-bottom: 2px solid black;
-    padding-bottom: 10px;
-}
-
-.successDiv {
-    order: 2;
-    width: 20%;
-    height: 50px; 
-    border: 2px outset rgb(255, 255, 255);
-    box-sizing: border-box;
-    margin: auto;
+.regBox {
+    background-color: #EBE3D5;
     text-align: center;
-    font-size: 1em;
+    margin: 10px;
+    border-radius: 20px;
+    box-shadow: 0px 1px 7px 3px #776B5D;
+    padding-top: 20px;
 }
+
+.otherOpt {
+    height: 100px;
+    background-color: #EBE3D5;
+    width: 100%;
+    text-align: center;
+    margin: 10px;
+    border-radius: 20px;
+    box-shadow: 0px 1px 7px 3px #776B5D;
+    padding: 20px;
+}
+
+.inputTitle {
+    user-select: none;
+    font-size:large;
+    border-radius: 5px;
+    width: 280px;
+}
+
+.hozLine {
+    border: 2px solid;
+    border-radius: 100px;
+    margin-top: -15px;
+    margin-bottom: -2px;
+}
+
+.input {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.boxInput {
+    height: 25px;
+    border: 1px solid;
+    text-align: center;
+    border-radius: 5px;
+    font-size: medium;
+    flex-shrink: 1;
+    flex: 1;
+}
+
+.boxInput:focus {
+    background-color: #ececec;
+}
+
+.boxInput:hover {
+    background-color: #ececec;
+}
+
+.btnInput {
+    height: 40px;
+    border: 1px solid;
+    text-align: center;
+    border-radius: 5px;
+    font-size: medium; 
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-color: #776B5D;
+    font-weight: bold;
+    color: white;
+    border-color: black;
+    flex: 1;
+}
+
+.btnInput:hover {
+    background-color: #5c5348;
+}
+.boxInput, p {
+    user-select: none;
+}
+
+/* Custom styles to limit the width and height of regBox and otherOpt */
+.custom-width {
+    max-width: 350px; /* Adjust this value as needed */
+}
+
+/* Custom styles for the register button */
+.custom-btn {
+    background-color: #776B5D; /* Custom background color */
+    border-color: #645a4e; /* Custom border color */
+    max-width: 150px;
+}
+
+.custom-btn:hover {
+    background-color: #4b433b; /* Custom hover background color */
+    border-color: #36312a; /* Custom hover border color */
+}
+
