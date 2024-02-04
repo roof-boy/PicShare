@@ -1,8 +1,10 @@
 <?php
 
+include 'config.php';
+
 session_start();
 
 if (!isset($_SESSION['username'])) {
-    header("Location: .." . $register_page);
+    header("Location: /instacopy" . $register_page);
 }
 ?>
