@@ -34,7 +34,7 @@ include '../config.php'
                         <button type="submit" class="btn btn-primary custom-btn">Register</button>
                     </div>
                     <div class="mb-3">
-                        <a class="link-offset-1 link-offset-1-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="..<?=$register_page ?>">
+                        <a class="link-offset-1 link-offset-1-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="<?=BASE_URL . 'registration/register.php' ?>">
                             Register Instead!
                           </a>
                     </div>
@@ -82,6 +82,9 @@ include '../config.php'
         var failDiv = document.getElementById('loginFail');
         if (paramValue === 'invalid') {
             failDiv.style.display = 'block'; // Show the div
+        } else if (paramValue === 'noCookie') {
+            failDiv.style.display = 'block';
+            failDiv.innerHTML = "You need to login first!"
         } else {
             failDiv.style.display = 'none';
         }
