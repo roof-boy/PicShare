@@ -31,7 +31,7 @@ include '../config.php'
                         <div class="invalid-feedback" id="password-validation">Password must be between 8 and 20 characters.</div>
                     </div>
                     <div class="mb-3 text-center">
-                        <button type="submit" class="btn btn-primary custom-btn">Register</button>
+                        <button type="submit" class="btn btn-primary custom-btn">Login</button>
                     </div>
                     <div class="mb-3">
                         <a class="link-offset-1 link-offset-1-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="<?=BASE_URL . 'registration/register.php' ?>">
