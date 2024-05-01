@@ -17,22 +17,19 @@ session_start();
             <nav class="navbar navColor">
                 <div class="container">
                     <a class="navbar-brand" href="#"><i>PicShare</i></a>
-                        <a href="../resetCookie.php">
-                            <button class="btn custom-button">Logout</button>
-                        </a>
+                    <a href="../resetCookie.php">
+                        <button class="btn custom-button">Logout</button>
+                    </a>
                 </div>
             </nav>
         </div>
         <div class="row h-100">
-            <div class="col-md-2 column-border">
-                <!-- LEFT COLUMN -->
-
+            <div class="col d-flex column-border justify-content-center">
+                <div style="border: 2px solid black;" class="row w-50 h-auto">
+                    <h1>test</h1>
+                </div>
             </div>
-            <div class="col-lg-7 column-border">
-                <!-- CENTER COLUMN -->
-
-            </div>
-            <div class="col">
+            <div class="col-md-3">
                 <!-- RIGHT COLUMN -->
                 <div class="container quickProfile shadow mt-3 mb-5 rounded">
                     <div class="row h-auto">

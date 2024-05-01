@@ -24,7 +24,7 @@ $formPass = $_POST['psw'];
 
 # Execute SELECT query
 
-$query = "SELECT passw FROM users WHERE username=?";
+$query = "SELECT id, passw FROM users WHERE username=?";
 $stmt = mysqli_prepare($conn, $query);
 mysqli_stmt_bind_param($stmt, "s", $formUsr);
 mysqli_stmt_execute($stmt);
@@ -38,6 +38,7 @@ if (mysqli_num_rows($result) > 0) {
     // Verify the provided password against the hashed password from the database
     if (password_verify($formPass, $hashedPasswordFromDatabase)) {
     $_SESSION['username'] = $formUsr;
+    $_SESSION['userId'] = $row['id'];
        header("Location: /instacopy/mainExperimental/main.php");
     } else {
         // Passwords do not match, redirect to login invalid page
