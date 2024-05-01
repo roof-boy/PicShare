@@ -37,8 +37,8 @@ if (mysqli_num_rows($result) > 0) {
 
     // Verify the provided password against the hashed password from the database
     if (password_verify($formPass, $hashedPasswordFromDatabase)) {
-       header("Location: /instacopy/");
-        $_SESSION['username'] = $username;
+    $_SESSION['username'] = $formUsr;
+       header("Location: /instacopy/mainExperimental/main.php");
     } else {
         // Passwords do not match, redirect to login invalid page
        header("Location: login.php?login=invalid");
