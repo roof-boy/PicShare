@@ -1,0 +1,19 @@
+ html, body {
+   height: 100%;
+ }
+ .row {
+   height: 100%;
+ }
+
+ /* Custom style for the border */
+ .column-border {
+   border-right: 3px solid #B0A695;
+ }
+ /* Ensure the last column doesn't have a border */
+ .col:last-child {
+   border-right: none;
+ }
+
+ body {
+   background-color: #EBE3D5;
+ }

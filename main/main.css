@@ -1,0 +1,14 @@
+.color {
+    background-color: whitesmoke;
+}
+
+.custom-height {
+    height: 100%;
+}
+
+.vr {
+    background-color: black; /* Set the color of the vertical rule */
+    width: 1px; /* Set the width of the vertical rule */
+    height: 100%; /* Make the vertical rule stretch to the full height */
+    margin: 0 auto; /* Center the vertical rule horizontally */
+}
