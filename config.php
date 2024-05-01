@@ -7,6 +7,9 @@ $password = "root";
 $server = "localhost";
 $database = "picshare";
 
-# PAGES CONFIG
-$login_page = '/login/login.php';
-$register_page = '/registration/register.php';
+# BASE PATH/URL CONFIGURATION
+
+define('BASE_URL', 'http://localhost/instacopy/'); # BASE URL
+
+define('BASE_PATH', dirname(__FILE__));
+
