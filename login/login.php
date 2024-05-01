@@ -116,7 +116,7 @@ include '../config.php'
     if (currentText.endsWith('|')) {
       textElement.innerHTML = currentText.slice(0, -1);
     } else {
-      textElement.innerHTML += '|';
+        textElement.innerHTML += '|';
     }
     setTimeout(blinkSlash, 500); // Adjust blinking speed here
   }
