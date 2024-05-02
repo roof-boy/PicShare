@@ -10,7 +10,7 @@ if ($conn->connect_error) {
 }
 
 // Prepare statement to retrieve username, bio, and upload date
-$query = "SELECT username, bio, uploadDate, content FROM users INNER JOIN posts ON users.id = posts.ownerID WHERE posts.forReview = false ORDER BY uploadDate DESC LIMIT 5";
+$query = "SELECT users.username, posts.bio, posts.uploadDate, posts.content, posts.id  FROM users INNER JOIN posts ON users.id = posts.ownerID WHERE posts.forReview = false ORDER BY uploadDate DESC LIMIT 5";
 $stmt = $conn->prepare($query);
 
 // Variable to store populated templates
@@ -26,7 +26,7 @@ $template = '<div class="custom-border rounded m-2 h-scrollable">
         <div class="col d-flex align-items-center">
             <img src="pfptemp.png" class="rounded-circle pfp-size m-1" alt="Placeholder">
             <a href="#" class="link-underline link-underline-opacity-0 link-color">%USERNAME%</a>
-            <p href="#" name="date" class="link-underline link-underline-opacity-0 link-color mt-3 ms-auto me-1">%UPLOAD_DATE%</p>
+            <p href="#" name="date" class="link-underline link-underline-opacity-0 link-color mt-3 ms-auto me-1">%UPLOAD_DATE% / %POST_ID%</p>
         </div>
     </div>
     <div class="row">
@@ -35,9 +35,12 @@ $template = '<div class="custom-border rounded m-2 h-scrollable">
     <div class="row border-top m-1">
         <p name="bio" class="opacity-50 fst-italic">%BIO%</p>
     </div>
-    <div class="col w-auto d-flex align-items-center m-1">
-        <a href="#" class="opacity-50 link-underline link-underline-opacity-0 link-color fst-italic ms-auto me-1">Report</a>
-    </div>
+    <form action="reportPost.php" id="reportForm" method="post">
+        <div class="col w-auto d-flex align-items-center m-1">
+            <input type="hidden" name="post_id" value="%POST_ID%">
+            <button id="reportBtn" class="btn btn-link opacity-50 link-underline link-underline-opacity-0 link-color fst-italic ms-auto me-1">Report</button>
+        </div>
+    </form>
 </div>';
 
 // Check if there are any rows returned
@@ -48,11 +51,12 @@ if ($result->num_rows > 0) {
         $username = $row['username'];
         $bio = $row['bio'];
         $uploadDate = $row['uploadDate'];
+        $postId = $row['id'];
 
         // Replace placeholders in the template with photo details
         $populatedTemplate = str_replace(
-            ["%PHOTO_PATH%", "%USERNAME%", "%BIO%", "%UPLOAD_DATE%"],
-            [$photoPath, $username, $bio, $uploadDate],
+            ["%PHOTO_PATH%", "%USERNAME%", "%BIO%", "%UPLOAD_DATE%", "%POST_ID%"],
+            [$photoPath, $username, $bio, $uploadDate, $postId],
             $template
         );
 
@@ -84,6 +88,13 @@ $conn->close();
                     <div>
                         <a href="#" class="navbar-brand ml-1 h2"><i>PicShare</i></a>
                         <button class="btn" id="newpost">New Post</button>
+                        <?php
+                        // Check if isAdmin is set and true
+                        if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] === true) {
+                            // Display the button for admins
+                            echo '<button class="btn"><a class="nav-link" href="../modPanel/mainmod.php">Moderation Panel</a></li>';
+                        }
+                        ?>
                     </div>
                     <button class="btn" id="logout">Logout</button>
                 </div>
@@ -118,6 +129,10 @@ $conn->close();
 
     logout.addEventListener('click', function() {
         window.location.href = '../resetCookie.php'
+
+        document.getElementById("reportBtn").onclick = function() {
+            document.getElementById("reportForm").submit();
+        }
     });
     </script>
 </body>

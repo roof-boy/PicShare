@@ -18,6 +18,13 @@ include '../auth.php';
                     <div>
                         <a href="../main/main.php" class="navbar-brand ml-1 h2"><i>PicShare</i></a>
                         <button class="btn" id="newpost">New Post</button>
+                        <?php
+                        // Check if isAdmin is set and true
+                        if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] === true) {
+                            // Display the button for admins
+                            echo '<button class="btn"><a class="nav-link" href="../modPanel/mainmod.php">Moderation Panel</a></li>';
+                        }
+                        ?>
                     </div>
                     <button class="btn" id="logout">Logout</button>
                 </div>
