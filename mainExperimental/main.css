@@ -1,43 +1,38 @@
- html, body {
-   height: 100%;
- }
- .row {
-   height: 100%;
- }
+body {
+  background-color: #EBE3D5;
+}
 
- /* Custom style for the border */
- .column-border {
-   border-right: 3px solid #B0A695;
- }
- /* Ensure the last column doesn't have a border */
- .col:last-child {
-   border-right: none;
- }
+.custom-border {
+  border: 3px solid #776B5D;
+  max-height: 100%;
+}
 
- body {
-   background-color: #EBE3D5;
- }
+.border-below {
+  border-bottom: 3px solid #776B5D;
+}
 
- .quickProfile {
-  border: 3px solid #B0A695;
-  box-shadow: 2px black;
- }
+.nav-properties {
+  background-color: #cec6ba;
+}
 
- .pfpImage {
-  margin: 2px;
- }
+.pfp-size {
+  height: 50px;
+  width: 50px;
+}
 
- .usernameDivider {
-  border-bottom: 2px solid #B0A695;
- }
+.link-color {
+  color: #776B5D;
+}
 
- .navColor {
-  background-color: #dbd3c8;
-  border-bottom: 3px solid #B0A695;
- }
+.custom-column {
+  max-height: calc(100vh - 58px); /* Ensures column doesn't expand beyond its container */
+}
 
- .custom-button {
-  background-color: #B0A695;
-      border-color: #776B5D;
-      color: white;
- }
+.h-scrollable {
+  overflow-x: hidden; /* Hides horizontal scrollbar */
+}
+
+.main-image-size {
+  max-width: 80%; /* Ensures image doesn't overflow container */
+  height: auto; /* Maintains aspect ratio */
+}

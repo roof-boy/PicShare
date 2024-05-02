@@ -6,58 +6,81 @@ session_start();
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="main.css">
 </head>
 
 <body>
-
     <div class="container-fluid">
-        <div class="row h-auto">
-            <nav class="navbar navColor">
-                <div class="container">
-                    <a class="navbar-brand" href="#"><i>PicShare</i></a>
-                    <a href="../resetCookie.php">
-                        <button class="btn custom-button">Logout</button>
-                    </a>
-                </div>
-            </nav>
-        </div>
-        <div class="row h-100">
-            <div class="col d-flex column-border justify-content-center">
-                <div style="border: 2px solid black;" class="row w-50 h-auto">
-                    <h1>test</h1>
+        <div class="row">
+            <div class="navbar navbar-expand-lg nav-properties">
+                <div class="container-fluid d-flex justify-content-between">
+                    <div>
+                        <a href="#" class="navbar-brand ml-1 h2"><i>PicShare</i></a>
+                        <button class="btn" id="newpost">New Post</button>
+                    </div>
+                    <button class="btn" id="logout">Logout</button>
                 </div>
             </div>
-            <div class="col-md-3">
-                <!-- RIGHT COLUMN -->
-                <div class="container quickProfile shadow mt-3 mb-5 rounded">
+        </div>
+        <div class="row flex-grow-1">
+            <div class="col">
+                <!-- left column -->
+            </div>
+            <div class="col-lg-5 custom-column overflow-auto">
+                <!-- center column -->
+                <div class="custom-border rounded m-2 h-scrollable">
                     <div class="row h-auto">
-                        <div class="col-sm-4 image">
-                            <img src="pfptemp.png" class="img-fluid img-circle float-left pfpImage" alt="">
-                        </div>
-                        <div class="col-lg">
-                            <div class="row h-auto usernameDivider text-center">
-                                <h1><?php echo($_SESSION['username']); ?></h1>
-                            </div>
-                            <div class="row h-auto flex-grow-1">
-                                <p>Placeholder Bio</p>
-                            </div>
+                        <div class="col d-flex align-items-center">
+                            <img src="pfptemp.png" class="rounded-circle pfp-size m-1" alt="Placeholder">
+                            <a href="#" class="link-underline link-underline-opacity-0 link-color">testAccount</a>
+                            <a href="#"
+                                class="link-underline link-underline-opacity-0 link-color ms-auto me-1">Report</a>
                         </div>
                     </div>
+                    <div class="row">
+                        <img src="ScaredCat.jpg" class="main-image-size m-2 mx-auto d-block img-thumbnail border-black"
+                            alt="">
+                    </div>
                 </div>
+                <div class="custom-border rounded m-2 h-scrollable">
+                    <div class="row h-auto">
+                        <div class="col d-flex align-items-center">
+                            <img src="pfptemp.png" class="rounded-circle pfp-size m-1" alt="Placeholder">
+                            <a href="#" class="link-underline link-underline-opacity-0 link-color">testAccount</a>
+                            <a href="#"
+                                class="link-underline link-underline-opacity-0 link-color ms-auto me-1">Report</a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <img src="ScaredCat.jpg" class="main-image-size m-2 mx-auto d-block img-thumbnail border-black"
+                            alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <!-- right column -->
             </div>
         </div>
     </div>
 
     <!-- Bootstrap Bundle with Popper -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+    <script src="../bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // Get references to the buttons
+        var newpost = document.getElementById('newpost');
+        var logout = document.getElementById('logout');
+
+        // Add event listeners to the buttons
+        newpost.addEventListener('click', function() {
+            window.location.href = '../upload/upload.php'
+        });
+
+        logout.addEventListener('click', function() {
+            window.location.href = '../resetCookie.php'
+        });
+    </script>
 </body>
 
 </html>
-
-<?php
-
-
-
-?>
