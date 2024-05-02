@@ -12,4 +12,4 @@ In order to register a user as an admin/moderator, you should register an accoun
 
 ## Possible upload error
 
-When uploading, if the image exceeds too big, it will return to the upload page with the url "..upload.php?error=error_file_upload". If the upload is succesful it should return you to the main page where you will be able to see your post.
+When uploading, if the image exceeds the maximum file size, it will return to the upload page with the url "..upload.php?error=error_file_upload". If the upload is succesful it should return you to the main page where you will be able to see your post.
