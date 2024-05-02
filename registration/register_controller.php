@@ -39,7 +39,7 @@ mysqli_stmt_bind_param($stmt_check_email, "s", $formMail);
 mysqli_stmt_execute($stmt_check_email);
 mysqli_stmt_store_result($stmt_check_email);
 if(mysqli_stmt_num_rows($stmt_check_email) > 0) {
-    header("Location: register.html?registration=failedEmail");
+    header("Location: register.php?registration=failedEmail");
     exit();
 }
 
