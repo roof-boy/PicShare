@@ -1,5 +1,5 @@
 <?php
-session_start();
+include '../auth.php';
 
 // Database connection
 $conn = new mysqli("localhost", "root", "root", "picshare");
@@ -9,68 +9,56 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Read uploaded photos from the directory
-$uploadDirectory = "../postPhotos/";
-$photos = glob($uploadDirectory . "*.{jpg,jpeg,png,gif}", GLOB_BRACE);
-
-// Sort the photos by modification time (newest first)
-usort($photos, function($a, $b) {
-    return filemtime($b) - filemtime($a);
-});
-
-// Select the five newest photos
-$newestPhotos = array_slice($photos, 0, 5);
-
-// Page template with placeholders
-$template = '<div class="custom-border rounded m-2 h-scrollable">
-                <div class="row h-auto">
-                    <div class="col d-flex align-items-center">
-                        <img src="pfptemp.png" class="rounded-circle pfp-size m-1" alt="Placeholder">
-                        <a href="#" class="link-underline link-underline-opacity-0 link-color">%USERNAME%</a>
-                        <a href="#" class="link-underline link-underline-opacity-0 link-color ms-auto me-1">Report</a>
-                    </div>
-                </div>
-                <div class="row">
-                    <img src="%PHOTO_PATH%" class="main-image-size overflow-hidden m-2 mx-auto d-block img-thumbnail border-black" alt="">
-                </div>
-            </div>';
+// Prepare statement to retrieve username, bio, and upload date
+$query = "SELECT username, bio, uploadDate, content FROM users INNER JOIN posts ON users.id = posts.ownerID WHERE posts.forReview = false ORDER BY uploadDate DESC LIMIT 5";
+$stmt = $conn->prepare($query);
 
 // Variable to store populated templates
 $populatedTemplates = "";
 
-// Prepare statement to retrieve username
-$query = "SELECT username FROM users INNER JOIN posts ON users.id = posts.ownerID WHERE posts.content = ?";
-$stmt = $conn->prepare($query);
+// Execute the statement
+$stmt->execute();
+$result = $stmt->get_result();
 
-// Populate the template with details of the five newest photos
-foreach ($newestPhotos as $photo) {
-    // Retrieve photo details (e.g., file path)
-    $photoPath = $photo;
-    
-    // Retrieve additional details from the photo (e.g., user account, bio, etc.)
-    // You may need to implement a method to extract this information from the photo file or database
+// Page template with placeholders
+$template = '<div class="custom-border rounded m-2 h-scrollable">
+    <div class="row h-auto">
+        <div class="col d-flex align-items-center">
+            <img src="pfptemp.png" class="rounded-circle pfp-size m-1" alt="Placeholder">
+            <a href="#" class="link-underline link-underline-opacity-0 link-color">%USERNAME%</a>
+            <p href="#" name="date" class="link-underline link-underline-opacity-0 link-color mt-3 ms-auto me-1">%UPLOAD_DATE%</p>
+        </div>
+    </div>
+    <div class="row">
+        <img src="%PHOTO_PATH%" class="main-image-size overflow-hidden m-2 mx-auto d-block img-thumbnail border-black" alt="">
+    </div>
+    <div class="row border-top m-1">
+        <p name="bio" class="opacity-50 fst-italic">%BIO%</p>
+    </div>
+    <div class="col w-auto d-flex align-items-center m-1">
+        <a href="#" class="opacity-50 link-underline link-underline-opacity-0 link-color fst-italic ms-auto me-1">Report</a>
+    </div>
+</div>';
 
-    // Execute statement to retrieve username
-    $stmt->bind_param("s", $photoPath);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    
-    if ($result->num_rows > 0) {
-        $row = $result->fetch_assoc();
+// Check if there are any rows returned
+if ($result->num_rows > 0) {
+    // Populate the template with details of the photos
+    while ($row = $result->fetch_assoc()) {
+        $photoPath = $row['content'];
         $username = $row['username'];
-    } else {
-        $username = "Unknown";
+        $bio = $row['bio'];
+        $uploadDate = $row['uploadDate'];
+
+        // Replace placeholders in the template with photo details
+        $populatedTemplate = str_replace(
+            ["%PHOTO_PATH%", "%USERNAME%", "%BIO%", "%UPLOAD_DATE%"],
+            [$photoPath, $username, $bio, $uploadDate],
+            $template
+        );
+
+        // Append the populated template to the variable
+        $populatedTemplates .= $populatedTemplate;
     }
-
-    // Replace placeholders in the template with photo details
-    $populatedTemplate = str_replace(
-        ["%PHOTO_PATH%", "%USERNAME%"],
-        [$photoPath, $username],
-        $template
-    );
-
-    // Append the populated template to the variable
-    $populatedTemplates .= $populatedTemplate;
 }
 
 // Close statement

@@ -2,6 +2,18 @@
 include '../config.php';
 session_start();
 
+// Function to truncate text to a specified length
+function truncateText($text, $maxLength) {
+    // Check if the text length exceeds the maximum length
+    if (strlen($text) > $maxLength) {
+        // Truncate the text and append "..."
+        $truncatedText = substr($text, 0, $maxLength) . "...";
+        return $truncatedText;
+    } else {
+        return $text; // Return the original text if it's within the limit
+    }
+}
+
 // Check if the form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Check if file is uploaded without errors
@@ -33,7 +45,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $stmt->bind_param("sss", $content, $bio, $ownerID);
 
             // Get other form data
-            $bio = $_POST["bio"];
+            // Truncate the bio text to a maximum length of 100 characters
+            $bio = truncateText($_POST["bio"], 200);
             $ownerID = $_SESSION["userId"]; // Assuming you have a session variable for userID
 
             // Set the content field to the file path
@@ -50,7 +63,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $stmt->close();
             $conn->close();
         } else {
-            echo "Error uploading file.";
+           header("Location: ");
         }
     } else {
         // Output file upload error

@@ -37,7 +37,3 @@ body {
   max-width: 60%; /* Ensures image doesn't overflow container */
   height: auto; /* Maintains aspect ratio */
 }
-
-.border-top {
-  border-top: 3px solid #776B5D;
-}
