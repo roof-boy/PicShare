@@ -39,12 +39,6 @@ CREATE TABLE IF NOT EXISTS `posts` (
   KEY `owner` (`ownerID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='Table of posts. All posts are tied to user IDs';
 
---
--- Dumping data for table `posts`
---
-
-INSERT INTO `posts` (`id`, `content`, `uploadDate`, `bio`, `forReview`, `ownerID`) VALUES
-(19, '../postPhotos/6633c39712522_NuclearBomb.jpg', '2024-05-02', 'nuc', 0, 23);
 
 -- --------------------------------------------------------
 
@@ -61,14 +55,6 @@ CREATE TABLE IF NOT EXISTS `users` (
   `isAdmin` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='Table of users. All passwords must be encrypted';
-
---
--- Dumping data for table `users`
---
-
-INSERT INTO `users` (`id`, `username`, `passw`, `email`, `isAdmin`) VALUES
-(23, 'Roofboy', '$2y$10$tt.kP7bvyADpXT6NLRCK7./K4bJWtCWLWgj2aSs6ukUjBNyn99FDW', 'sovaelias@gmail.com', 1),
-(24, 'test1', '$2y$10$QLGTuU7sb1eLgFFwvFSZVeDwVpcEMQG9bvJMkNAIz0YZjyyDvF9yG', 'test@gmail.com', 0);
 
 --
 -- Constraints for dumped tables
