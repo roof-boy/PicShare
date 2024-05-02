@@ -24,6 +24,9 @@
                 <!-- left column -->
             </div>
             <div class="col-lg-5 custom-column overflow-auto">
+                <div class="row text-center">
+                    <h1>MOD PANEL - POSTS FOR REVIEW</h1>
+                </div>
                 <div class="custom-border rounded m-2 h-scrollable">
                     <div class="row h-auto">
                         <div class="col d-flex align-items-center">
@@ -38,8 +41,16 @@
                     <div class="row border-top m-1">
                         <p name="bio" class="opacity-50 fst-italic text-truncate">PLACEHOLDER</p>
                     </div>
-                    <div class="col w-auto d-flex align-items-center m-1">
-                        <a href="#" class="opacity-50 link-underline link-underline-opacity-0 link-color fst-italic ms-auto me-1">Report</a>
+                    <div class="row">
+                    <div class="col text-center m-1">
+                        <form action="acceptReview.php" method="post">
+                            <button type="submit" class="btn btn-success">Accept Review</button>
+                        </form>
+                    </div>
+                    <div class="col text-center">
+                        <form action="denyReview.php" method="post">
+                            <button type="submit" class="btn btn-danger">Deny Review</button>
+                        </form>
                     </div>
                 </div>
             </div>

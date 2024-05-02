@@ -1,0 +1,43 @@
+body {
+  background-color: #EBE3D5;
+}
+
+.custom-border {
+  border: 3px solid #776B5D;
+  max-height: 100%;
+  overflow: hidden;
+}
+
+.border-below {
+  border-bottom: 3px solid #776B5D;
+}
+
+.nav-properties {
+  background-color: #cec6ba;
+}
+
+.pfp-size {
+  height: 50px;
+  width: 50px;
+}
+
+.link-color {
+  color: #776B5D;
+}
+
+.custom-column {
+  max-height: calc(100vh - 58px); /* Ensures column doesn't expand beyond its container */
+}
+
+.h-scrollable {
+  overflow-x: hidden; /* Hides horizontal scrollbar */
+}
+
+.main-image-size {
+  max-width: 60%; /* Ensures image doesn't overflow container */
+  height: auto; /* Maintains aspect ratio */
+}
+
+.border-top {
+  border-top: 3px solid #776B5D;
+}
