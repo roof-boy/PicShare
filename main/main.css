@@ -5,6 +5,7 @@ body {
 .custom-border {
   border: 3px solid #776B5D;
   max-height: 100%;
+  overflow: hidden;
 }
 
 .border-below {
@@ -33,6 +34,6 @@ body {
 }
 
 .main-image-size {
-  max-width: 80%; /* Ensures image doesn't overflow container */
+  max-width: 60%; /* Ensures image doesn't overflow container */
   height: auto; /* Maintains aspect ratio */
 }
