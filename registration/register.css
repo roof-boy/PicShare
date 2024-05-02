@@ -114,3 +114,8 @@ body, html {
     border-color: #36312a; /* Custom hover border color */
 }
 
+#titleEffect {
+    font-style: italic;
+    font-size: 100px;
+    padding-bottom: 20px;
+}

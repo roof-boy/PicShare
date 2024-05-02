@@ -12,6 +12,7 @@ include '../config.php'
     <link rel="stylesheet" href="register.css">
 </head>
 <body class="mainDisplay">
+    <div id="titleEffect"></div>
     <div class="container-lg regBox custom-width custom-height">
         <div class="row justify-content-space-between align-items-center">
             <div class="col-12 text-center">
@@ -123,6 +124,32 @@ include '../config.php'
     window.onload = function() {
         toggleDivVisibility();
     };
+
+    const textElement = document.getElementById('titleEffect');
+  const text = "PicShare";
+  let index = 0;
+
+  function typeWriter() {
+    if (index < text.length) {
+      textElement.innerHTML += text.charAt(index);
+      index++;
+      setTimeout(typeWriter, 50); // Adjust typing speed here
+    } else {
+      setTimeout(blinkSlash, 500); // Start blinking slash when typing is complete
+    }
+  }
+
+  function blinkSlash() {
+    const currentText = textElement.innerHTML;
+    if (currentText.endsWith('|')) {
+      textElement.innerHTML = currentText.slice(0, -1);
+    } else {
+        textElement.innerHTML += '|';
+    }
+    setTimeout(blinkSlash, 500); // Adjust blinking speed here
+  }
+
+  typeWriter(); // Start typewriter effect
     </script>
 </body>
 </html>
