@@ -39,7 +39,7 @@ if (mysqli_num_rows($result) > 0) {
     if (password_verify($formPass, $hashedPasswordFromDatabase)) {
     $_SESSION['username'] = $formUsr;
     $_SESSION['userId'] = $row['id'];
-       header("Location: /instacopy/mainExperimental/main.php");
+       header("Location: /instacopy/main/main.php");
     } else {
         // Passwords do not match, redirect to login invalid page
        header("Location: login.php?login=invalid");

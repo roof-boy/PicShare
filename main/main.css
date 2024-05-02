@@ -1,14 +1,38 @@
-.color {
-    background-color: whitesmoke;
+body {
+  background-color: #EBE3D5;
 }
 
-.custom-height {
-    height: 100%;
+.custom-border {
+  border: 3px solid #776B5D;
+  max-height: 100%;
 }
 
-.vr {
-    background-color: black; /* Set the color of the vertical rule */
-    width: 1px; /* Set the width of the vertical rule */
-    height: 100%; /* Make the vertical rule stretch to the full height */
-    margin: 0 auto; /* Center the vertical rule horizontally */
+.border-below {
+  border-bottom: 3px solid #776B5D;
+}
+
+.nav-properties {
+  background-color: #cec6ba;
+}
+
+.pfp-size {
+  height: 50px;
+  width: 50px;
+}
+
+.link-color {
+  color: #776B5D;
+}
+
+.custom-column {
+  max-height: calc(100vh - 58px); /* Ensures column doesn't expand beyond its container */
+}
+
+.h-scrollable {
+  overflow-x: hidden; /* Hides horizontal scrollbar */
+}
+
+.main-image-size {
+  max-width: 80%; /* Ensures image doesn't overflow container */
+  height: auto; /* Maintains aspect ratio */
 }
