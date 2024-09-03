@@ -43,6 +43,8 @@ $template = '<div class="custom-border rounded m-2 h-scrollable">
     </form>
 </div>';
 
+$noPostsHtml = '<h3 class="text-center">We couldnt find any posts!</h3>';
+
 // Check if there are any rows returned
 if ($result->num_rows > 0) {
     // Populate the template with details of the photos
@@ -63,6 +65,8 @@ if ($result->num_rows > 0) {
         // Append the populated template to the variable
         $populatedTemplates .= $populatedTemplate;
     }
+} else {
+    $populatedTemplates .= $noPostsHtml;
 }
 
 // Close statement
